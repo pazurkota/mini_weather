@@ -15,7 +15,14 @@ public class Main {
             Geolocation geolocation = parser.parseGeolocationData("Wroclaw");
             WeatherRoot currentWeather = parser.parseWeatherData(geolocation.lat, geolocation.lon);
 
-            System.out.println(currentWeather.weather.getFirst().main);
+            System.out.println(currentWeather.weather.getFirst().description);
+
+            // check if JSON returned precipitation, if not, show 0
+            if (currentWeather.rain != null) {
+                System.out.println(currentWeather.rain._1h);
+            } else {
+                System.out.println(0);
+            }
         } catch(Exception e) {
             e.printStackTrace();
         }
