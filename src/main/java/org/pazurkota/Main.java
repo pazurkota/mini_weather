@@ -3,6 +3,7 @@ package org.pazurkota;
 import org.pazurkota.API.ApiClient;
 import org.pazurkota.API.DataParser;
 import org.pazurkota.Model.Geolocation;
+import org.pazurkota.Model.WeatherRoot;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -12,10 +13,9 @@ public class Main {
     public static void main(String[] args) {
         try {
             Geolocation geolocation = parser.parseGeolocationData("Wroclaw");
+            WeatherRoot currentWeather = parser.parseWeatherData(geolocation.lat, geolocation.lon);
 
-            // print both latitude and longitude
-            System.out.println(geolocation.lat);
-            System.out.println(geolocation.lon);
+            System.out.println(currentWeather.weather.getFirst().main);
         } catch(Exception e) {
             e.printStackTrace();
         }

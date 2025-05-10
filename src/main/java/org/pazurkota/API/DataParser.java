@@ -30,13 +30,7 @@ public class DataParser {
     public WeatherRoot parseWeatherData(float lat, float lon) throws IOException, InterruptedException {
         String data = ApiClient.getWeatherData(lat, lon);
 
-        WeatherRoot[] weatherRoots = new Gson().fromJson(data, WeatherRoot[].class);
-
-        if (weatherRoots.length > 0) {
-            return weatherRoots[0];
-        }
-
-        return null;
+        return new Gson().fromJson(data, WeatherRoot.class);
     }
 
     public Geolocation parseGeolocationData(String cityName) throws IOException, InterruptedException {
