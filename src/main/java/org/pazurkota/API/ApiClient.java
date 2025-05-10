@@ -23,7 +23,7 @@ public class ApiClient {
 
         HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
-        return response.toString();
+        return response.body();
     }
 
     public static String getGeolocation(String cityName) throws IOException, InterruptedException {
@@ -34,6 +34,6 @@ public class ApiClient {
 
         HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
-        return response.toString();
+        return response.body();
     }
 }

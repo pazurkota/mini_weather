@@ -1,4 +1,4 @@
-﻿package org.pazurkota.Model.WeatherModels;
+package org.pazurkota.Model.WeatherModels;
 
 // returns cloudiness in %
 public class Clouds{

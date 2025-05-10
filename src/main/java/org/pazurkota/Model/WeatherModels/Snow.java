@@ -1,4 +1,4 @@
-﻿package org.pazurkota.Model.WeatherModels;
+package org.pazurkota.Model.WeatherModels;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,4 +1,4 @@
-﻿package org.pazurkota.Model;
+package org.pazurkota.Model;
 
 import org.pazurkota.Model.WeatherModels.*;
 import java.util.ArrayList;

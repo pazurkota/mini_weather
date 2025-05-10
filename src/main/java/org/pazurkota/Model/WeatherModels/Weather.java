@@ -1,4 +1,4 @@
-﻿package org.pazurkota.Model.WeatherModels;
+package org.pazurkota.Model.WeatherModels;
 
 public class Weather {
     public int id;
