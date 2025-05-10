@@ -7,16 +7,6 @@ import org.pazurkota.Model.Geolocation;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        try {
-            Geolocation geolocation = ApiClient.getGeolocation("Wroclaw");
-
-            // check if geolocation is not null
-            assert geolocation != null;
-
-            System.out.println(geolocation.lat); // get latitude
-            System.out.println(geolocation.lon); // get longitude
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        System.out.println("hello world!");
     }
 }

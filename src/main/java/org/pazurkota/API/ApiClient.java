@@ -15,11 +15,18 @@ public class ApiClient {
     private final static String BASE_URL = "https://api.openweathermap.org";
     private final static String API_KEY = ApiKeyHandler.readKeyFromJsonFile();
 
-    public static String getWeatherData(float lat, float lon) throws IOException, InterruptedException, NotImplementedException {
-        throw new NotImplementedException("This feature has been not implemented yet");
+    public static String getWeatherData(float lat, float lon) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(BASE_URL + "/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + API_KEY))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.toString();
     }
 
-    public static Geolocation getGeolocation(String cityName) throws IOException, InterruptedException {
+    public static String getGeolocation(String cityName) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(BASE_URL + "/geo/1.0/direct?q=" + cityName + "&limit=1&appid=" + API_KEY))
                 .GET()
@@ -27,12 +34,6 @@ public class ApiClient {
 
         HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
-        if (response.statusCode() == 200) {
-            Geolocation[] geolocations = new Gson().fromJson(response.body(), Geolocation[].class);
-            if (geolocations.length > 0) {
-                return geolocations[0];
-            }
-        }
-        return null;
+        return response.toString();
     }
 }
