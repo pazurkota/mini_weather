@@ -27,21 +27,32 @@ public class DataParser {
         return instance;
     }
 
-    public WeatherRoot parseWeatherData(float lat, float lon) throws IOException, InterruptedException {
-        String data = ApiClient.getWeatherData(lat, lon);
+    public WeatherRoot parseWeatherData(float lat, float lon) {
+        try {
+            String data = ApiClient.getWeatherData(lat, lon);
 
-        return new Gson().fromJson(data, WeatherRoot.class);
+            return new Gson().fromJson(data, WeatherRoot.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return null;
+        }
     }
 
-    public Geolocation parseGeolocationData(String cityName) throws IOException, InterruptedException {
-        String data = ApiClient.getGeolocation(cityName);
+    public Geolocation parseGeolocationData(String cityName) {
+        try {
+            String data = ApiClient.getGeolocation(cityName);
 
-        Geolocation[] geolocations = new Gson().fromJson(data, Geolocation[].class);
+            Geolocation[] geolocations = new Gson().fromJson(data, Geolocation[].class);
 
-        if (geolocations.length > 0) {
-            return geolocations[0];
+            if (geolocations.length > 0) {
+                return geolocations[0];
+            }
+
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
-
-        return null;
     }
 }
