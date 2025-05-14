@@ -1,9 +1,9 @@
 package org.pazurkota;
 
-import org.pazurkota.API.ApiClient;
 import org.pazurkota.API.DataParser;
 import org.pazurkota.Model.Geolocation;
 import org.pazurkota.Model.WeatherRoot;
+import org.pazurkota.View.GetData;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -17,12 +17,10 @@ public class Main {
 
             System.out.println(currentWeather.weather.getFirst().description);
 
-            // check if JSON returned precipitation, if not, show 0
-            if (currentWeather.rain != null) {
-                System.out.println(currentWeather.rain._1h);
-            } else {
-                System.out.println(0);
-            }
+            float[] getWindData = GetData.getWindData(currentWeather);
+
+            System.out.println(getWindData[0]); // wind speed
+            System.out.println(GetData.getRainData(currentWeather));
         } catch(Exception e) {
             e.printStackTrace();
         }

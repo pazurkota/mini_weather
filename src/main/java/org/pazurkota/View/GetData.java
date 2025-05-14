@@ -1,17 +1,50 @@
-﻿package org.pazurkota.View;
+package org.pazurkota.View;
 
 import org.pazurkota.API.DataParser;
 import org.pazurkota.Model.WeatherRoot;
 
+import java.util.Optional;
+
+// This class has been created to handle some of the weather data
+// If API doesn't return some data, this class handles that
 public class GetData {
-    private static float _lat;
-    private static float _lon;
+    /// Returns table with the following data order:
+    /// @return float[] {windSpeed, windDegree, windGust}
+    public static float[] getWindData(WeatherRoot root) {
+        float windSpeed = 0f;
+        int windDegree = 0;
+        float windGust = 0f;
 
-    private static final DataParser parser = DataParser.getInstance();
-    private static final WeatherRoot root = parser.parseWeatherData(_lat, _lon);
+        if(root.wind != null) {
+            windSpeed = root.wind.speed;
+            windDegree = root.wind.deg;
+            windGust = root.wind.gust;
+        }
 
-    public GetData(float lat, float lon) {
-        _lat = lat;
-        _lon = lon;
+        return new float[] {windSpeed, windDegree, windGust};
+    }
+
+    public static int getCloudsData(WeatherRoot root) {
+        if (root.clouds != null) {
+            return root.clouds.all;
+        }
+
+        return 0;
+    }
+
+    public static float getRainData(WeatherRoot root) {
+        if (root.rain != null) {
+            return root.rain._1h;
+        }
+
+        return 0f;
+    }
+
+    public static float getSnowData(WeatherRoot root) {
+        if (root.snow != null) {
+            return root.snow._1h;
+        }
+
+        return 0f;
     }
 }
