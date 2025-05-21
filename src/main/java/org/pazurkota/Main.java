@@ -4,6 +4,7 @@ import org.pazurkota.API.DataParser;
 import org.pazurkota.Model.Geolocation;
 import org.pazurkota.Model.WeatherRoot;
 import org.pazurkota.View.GetData;
+import org.pazurkota.View.PrintData;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -12,15 +13,11 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            Geolocation geolocation = parser.parseGeolocationData("Wroclaw");
-            WeatherRoot currentWeather = parser.parseWeatherData(geolocation.lat, geolocation.lon);
+            Geolocation geolocation = parser.parseGeolocationData("Berlin");
 
-            System.out.println(currentWeather.weather.getFirst().description);
+            PrintData data = new PrintData(geolocation.lat, geolocation.lon);
 
-            float[] getWindData = GetData.getWindData(currentWeather);
-
-            System.out.println(getWindData[0]); // wind speed
-            System.out.println(GetData.getRainData(currentWeather));
+            data.printCurrentWeather();
         } catch(Exception e) {
             e.printStackTrace();
         }

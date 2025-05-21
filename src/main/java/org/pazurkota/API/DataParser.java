@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import org.pazurkota.Model.Geolocation;
 import org.pazurkota.Model.WeatherRoot;
 
-import java.io.IOException;
-
 public class DataParser {
     private static volatile DataParser instance = null;
 

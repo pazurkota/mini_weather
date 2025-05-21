@@ -16,5 +16,6 @@ public class WeatherRoot {
     public Sys sys;
     public int timezone;
     public int id;
+    public String name;
     public int cod;
 }
