@@ -17,7 +17,7 @@ public class ApiClient {
 
     public static String getWeatherData(float lat, float lon) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(BASE_URL + "/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + API_KEY))
+                .uri(URI.create(BASE_URL + "/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + API_KEY + "&units=metric")) // now use metric units
                 .GET()
                 .build();
 
