@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            Geolocation geolocation = parser.parseGeolocationData("Berlin");
+            Geolocation geolocation = parser.parseGeolocationData("New York");
 
             PrintData data = new PrintData(geolocation.lat, geolocation.lon);
 

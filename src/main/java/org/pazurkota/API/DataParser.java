@@ -39,7 +39,7 @@ public class DataParser {
 
     public Geolocation parseGeolocationData(String cityName) {
         try {
-            String data = ApiClient.getGeolocation(cityName);
+            String data = ApiClient.getGeolocation(cityName.replaceAll("\\s+", "_"));
 
             Geolocation[] geolocations = new Gson().fromJson(data, Geolocation[].class);
 
