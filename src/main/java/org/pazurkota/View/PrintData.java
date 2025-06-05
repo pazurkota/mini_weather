@@ -14,7 +14,7 @@ public class PrintData {
 
     public void printCurrentWeather() {
         String data = "Current weather for " + weather.name + " is " + weather.weather.getFirst().description + ".\n" +
-                "Current temperature is " + weather.main.temp + "°C, but feels like " + weather.main.feels_like + "°C";
+                "Current temperature is " + weather.main.temp + "°C, but feels like " + weather.main.feels_like + "°C\n\n";
 
         data += printWindData();
 
@@ -24,7 +24,7 @@ public class PrintData {
     public String printWindData() {
         float[] data = GetData.getWindData(weather);
 
-        String str = "\n\nCURRENT WIND DATA:\n";
+        String str = "";
         str += "Current wind speed: " + data[0] + "\n";
         str += "Current wind degree: " + data[1] + "\n";
         str += "Current wind gusts: " + data[2] + "\n";
